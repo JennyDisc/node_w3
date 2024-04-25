@@ -14,7 +14,7 @@ router.post('/', function (req, res, next) {
 });
 
 router.delete('/', function (req, res, next) {
-  PostController.deleteAllPosts(req, res);
+    PostController.deleteAllPosts(req, res);
 });
 
 router.delete('/:id', function (req, res, next) {
