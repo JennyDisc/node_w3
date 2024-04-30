@@ -5,7 +5,6 @@ function successHandle(res, newPost) {
         "status": "success",
         "data": newPost
     });
-    res.end();
 };
 
 module.exports = successHandle;

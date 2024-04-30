@@ -5,7 +5,6 @@ function errorHandle(res, message) {
         "status": 'false',
         "message": message
     })
-    res.end();
 };
 
 module.exports = errorHandle;
