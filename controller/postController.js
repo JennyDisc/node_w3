@@ -60,8 +60,8 @@ const postController = {
                 const message = '查無該筆貼文 id';
                 errorHandle(res, message);
             };
-        } catch {
-            const message = '查無該筆貼文 id';
+        } catch (error) {
+            const message = error;
             errorHandle(res, message);
         }
     },
@@ -73,7 +73,7 @@ const postController = {
             const idResult = await Post.findById(id);
             // 找到這筆 id 會回傳那筆的物件內容。找不到則回傳 null
             // console.log(idResult);
-            if (data.content.trim() !== undefined && idResult !== null) {
+            if (data.content.trim() !== undefined && idResult !== null && data.content.trim() !== "") {
                 await Post.findByIdAndUpdate(
                     id,
                     {
