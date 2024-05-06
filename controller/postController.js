@@ -48,17 +48,22 @@ const postController = {
         }
     },
     async deletePosts(req, res) {
-        const id = req.params.id;
-        const idResult = await Post.findByIdAndDelete(id);
-        // 找到可刪除的會回傳那筆的物件內容。找不到可刪除的則回傳 null
-        // console.log(idResult);
-        if (idResult !== null) {
-            successHandle(res, null);
+        try {
+            const id = req.params.id;
+            const idResult = await Post.findByIdAndDelete(id);
+            // 找到可刪除的會回傳那筆的物件內容。找不到可刪除的則回傳 null
+            // console.log(idResult);
+            if (idResult !== null) {
+                successHandle(res, null);
 
-        } else {
+            } else {
+                const message = '查無該筆貼文 id';
+                errorHandle(res, message);
+            };
+        } catch {
             const message = '查無該筆貼文 id';
             errorHandle(res, message);
-        };
+        }
     },
     async patchPosts(req, res) {
         try {
