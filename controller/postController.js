@@ -11,7 +11,7 @@ const postController = {
     async postPosts(req, res) {
         try {
             const data = req.body;
-            if (data.content.trim() !== undefined) {
+            if (data.content !== undefined && data.content.trim() !== "") {
                 const newPost = await Post.create(
                     {
                         name: data.name,
